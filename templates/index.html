@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RobotChat</title>
+</head>
+
+<body>
+    <h1>🤖 RobotChat</h1>
+
+    <input id="message" placeholder="Ask RobotChat">
+    <button onclick="sendMessage()">Send</button>
+
+    <p id="response"></p>
+
+    <script>
+        async function sendMessage() {
+            let message = document.getElementById("message").value;
+
+            let response = await fetch("/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    message: message
+                })
+            });
+
+            let data = await response.json();
+
+            document.getElementById("response").innerText = data.response;
+        }
+    </script>
+</body>
+</html>
