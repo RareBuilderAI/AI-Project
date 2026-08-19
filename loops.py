@@ -1,9 +1,18 @@
-class User: 
-   def __init__(self, name, status):
-        self.name = name
-        self.status = status
+import os
+import requests
+from dotenv import load_dotenv
 
-user1 = User("Yhomi", "active")
+load_dotenv()
 
-print(user1.name)
-print(user1.status)
+api_key = os.getenv("TEST_API_KEY")
+
+headers = {
+    "Authorization": f"Bearer {api_key}"
+}
+
+response = requests.get(
+    "https://httpbin.org/anything",
+    headers=headers
+)
+
+print("Status:", response.status_code)

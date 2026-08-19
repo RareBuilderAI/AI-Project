@@ -1,0 +1,29 @@
+class Memory:
+    def __init__(self):
+        self.data = {}
+
+    def remember(self, key, value):
+        self.data[key] = value
+
+    def recall(self, key):
+        return self.data.get(key)
+
+
+class Assistant:
+    def __init__(self, name):
+        self.name = name
+        self.memory = Memory()
+
+    def learn(self, key, value):
+        self.memory.remember(key, value)
+        print("I remembered that.")
+
+    def tell_me(self, key):
+        print(self.memory.recall(key))
+
+
+robot = Assistant("RobotChat")
+
+robot.learn("goal", "Build AI")
+
+robot.tell_me("goal")

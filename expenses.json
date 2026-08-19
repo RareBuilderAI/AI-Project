@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Food",
+        "amount": 5000.0,
+        "category": "Food"
+    },
+    {
+        "name": "Food",
+        "amount": 5000.0,
+        "category": "Eating"
+    },
+    {
+        "name": "Transport",
+        "amount": 2000.0,
+        "category": "Travel"
+    },
+    {
+        "name": "Food",
+        "amount": 5000.0,
+        "category": "Eating"
+    },
+    {
+        "name": "Food",
+        "amount": 5000.0
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "user": "hello",
+        "assistant": "Hello! How can I help you?"
+    },
+    {
+        "user": "who are you ",
+        "assistant": "I don't understand yet."
+    },
+    {
+        "user": "python main.py",
+        "assistant": "I don't understand yet."
+    },
+    {
+        "user": "python main.py",
+        "assistant": "I don't understand yet."
+    },
+    {
+        "user": "who are you ",
+        "assistant": "I don't understand yet."
+    },
+    {
+        "user": "who are you",
+        "assistant": "I am RobotChat, built by Yhomi. My mission is to Build AI and automation systems."
+    },
+    {
+        "user": "what is python",
+        "assistant": "Python is a programming language used to build software, automation, and AI."
+    },
+    {
+        "user": "hello",
+        "assistant": "Hello! How can I help you?"
+    },
+    {
+        "user": "date",
+        "assistant": "2026-08-19"
+    },
+    {
+        "user": "calculate 5 + 5",
+        "assistant": "10"
+    },
+    {
+        "user": "status",
+        "assistant": "RobotChat systems are online."
+    }
+]

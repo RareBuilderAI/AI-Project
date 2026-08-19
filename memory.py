@@ -1,9 +1,9 @@
-memory = {}
+class Memory:
+    def __init__(self):
+        self.data = {}
 
+    def remember(self, key, value):
+        self.data[key] = value
 
-def remember(key, value):
-    memory[key] = value
-
-
-def recall(key):
-    return memory.get(key)
+    def recall(self, key):
+        return self.data.get(key)

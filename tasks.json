@@ -1,0 +1,42 @@
+[
+    {
+        "task": "Build RobotChat",
+        "completed": true
+    },
+    {
+        "task": "Study AI",
+        "completed": true
+    },
+    {
+        "task": "Learn Python and AI",
+        "completed": false
+    },
+    {
+        "task": "Build RobotChat Telegram connection",
+        "completed": false
+    },
+    {
+        "task": "Build RobotChat Telegram connection",
+        "completed": false
+    },
+    {
+        "task": "Build RobotChat Telegram connection",
+        "completed": true
+    },
+    {
+        "task": "Build RobotChat To-Do connection",
+        "completed": false
+    },
+    {
+        "task": "Build Robot chat To-Do connection",
+        "completed": false
+    },
+    {
+        "task": "Build RobotChat To-Do connection",
+        "completed": false
+    },
+    {
+        "task": "Build RobotChat",
+        "completed": false
+    }
+]
