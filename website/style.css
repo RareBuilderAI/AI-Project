@@ -262,3 +262,127 @@ header img {
     object-fit: contain;
 
 }
+
+.hero {
+
+    text-align: center;
+    padding: 80px 10%;
+
+}
+
+.hero img {
+
+    width: 120px;
+    margin-bottom: 25px;
+
+}
+
+.hero h2 {
+
+    font-size: 28px;
+    margin-bottom: 20px;
+
+}
+
+.hero p {
+
+    max-width: 700px;
+    margin: auto;
+
+}
+
+@media (max-width: 768px) {
+
+.vision {
+
+    flex-direction: column;
+    text-align: center;
+
+}
+
+.vision img {
+
+    width: 100%;
+
+}
+
+
+}
+.contact-section {
+
+    text-align: center;
+    padding: 70px 10%;
+
+}
+
+
+.contact-card {
+
+    background: #1e293b;
+    color: white;
+    padding: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 15px;
+
+}
+
+
+.contact-card img {
+
+    width: 250px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+
+}
+.story {
+
+    text-align: center;
+    padding: 70px 10%;
+
+}
+
+.story img {
+
+    width: 350px;
+    margin-top: 30px;
+    border-radius: 15px;
+
+}
+.project-card {
+
+    background: #1e293b;
+    padding: 30px;
+    margin: 30px auto;
+    border-radius: 15px;
+    max-width: 700px;
+    text-align: center;
+
+}
+
+
+.project-card img {
+
+    width: 100%;
+    max-width: 500px;
+    border-radius: 15px;
+    margin: 20px 0;
+
+}
+
+
+.project-card h3 {
+
+    font-size: 25px;
+    margin-bottom: 15px;
+
+}
+
+
+.project-card p {
+
+    color: #d1d5db;
+    line-height: 1.8;
+
+}
+
