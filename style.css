@@ -1,0 +1,264 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    line-height: 1.6;
+
+}
+
+
+nav {
+
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 25px;
+    background: #020617;
+    border-bottom: 1px solid #1e293b;
+
+}
+
+nav a {
+
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+
+}
+
+nav a:hover {
+
+    color: #38bdf8;
+
+}
+
+section {
+
+    padding: 100px 10%;
+    text-align: center;
+
+}
+
+h1 {
+
+    font-size: 56px;
+    margin-bottom: 20px;
+    font-weight: bold;
+
+}
+
+h2 {
+
+    font-size: 32px;
+    margin-bottom: 30px;
+
+}
+
+
+h3 {
+
+    font-size: 24px;
+    margin-bottom: 15px;
+
+}
+
+
+p {
+
+    max-width: 800px;
+    margin: 15px auto;
+    font-size: 18px;
+
+}
+
+
+.button {
+
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #111827;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+
+}
+
+
+.button:hover {
+
+    background: #2563eb;
+
+}
+
+
+/* Featured Projects */
+
+.project-card {
+
+background: #1e293b;
+    padding: 20px;
+    margin: 30px auto;
+    border-radius: 15px;
+    max-width: 700px;
+
+}
+
+
+.project-card img {
+
+    width: 200px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+    margin: 20px auto;
+
+}
+
+
+/* Contact */
+
+footer {
+
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 40px;
+
+}
+
+
+footer p {
+
+    color: #d1d5db;
+
+}
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+.project-card {
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+
+.project-card:hover {
+
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+}
+
+.button {
+
+    transition: 0.3s ease;
+
+}
+
+section p {
+
+    max-width: 800px;
+    margin: 15px auto;
+    font-size: 18px;
+    line-height: 1.8;
+
+}
+
+@media (max-width: 768px) {
+
+
+    nav {
+
+        flex-direction: column;
+        gap: 15px;
+
+    }
+
+
+    h1 {
+
+        font-size: 36px;
+
+    }
+
+
+    h2 {
+
+        font-size: 26px;
+
+    }
+
+
+    h3 {
+
+        font-size: 20px;
+
+    }
+
+
+    section {
+
+        padding: 60px 5%;
+
+    }
+
+
+    .project-card {
+
+        width: 100%;
+
+    }
+
+
+    .project-card img {
+
+        width: 100%;
+        height: auto;
+
+    }
+
+
+    p {
+
+        font-size: 16px;
+
+    }
+
+
+}
+
+header img {
+
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 20px;
+
+}
+
+.brand img {
+
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+
+}

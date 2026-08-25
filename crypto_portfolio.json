@@ -1,0 +1,13 @@
+[
+    {
+        "name": "Bitcoin",
+        "amount": 2,
+        "price": 75000,
+        "old_price": 70000
+    },
+    {
+        "name": "Bitcoin",
+        "amount": 2,
+        "price": 75000
+    }
+]

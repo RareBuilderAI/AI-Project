@@ -6,3 +6,8 @@ class Personality:
 
     def about(self):
         return f"I am {self.name}, built by {self.creator}. My mission is to {self.mission}."
+
+
+robot = Personality()
+
+print(robot.about())

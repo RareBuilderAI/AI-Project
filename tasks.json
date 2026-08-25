@@ -1,10 +1,6 @@
 [
     {
-        "task": "Build RobotChat",
-        "completed": true
-    },
-    {
-        "task": "Study AI",
+        "task": "2",
         "completed": true
     },
     {
@@ -13,7 +9,7 @@
     },
     {
         "task": "Build RobotChat Telegram connection",
-        "completed": false
+        "completed": true
     },
     {
         "task": "Build RobotChat Telegram connection",
@@ -37,6 +33,18 @@
     },
     {
         "task": "Build RobotChat",
+        "completed": false
+    },
+    {
+        "task": "2",
+        "completed": false
+    },
+    {
+        "task": "Connect projects to RobotChat",
+        "completed": false
+    },
+    {
+        "task": "Build Raremotion Labs website",
         "completed": false
     }
 ]
