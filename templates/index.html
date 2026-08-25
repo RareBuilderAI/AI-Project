@@ -1,35 +1,207 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>RobotChat</title>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
 
-<body>
-    <h1>🤖 RobotChat</h1>
-
-    <input id="message" placeholder="Ask RobotChat">
-    <button onclick="sendMessage()">Send</button>
-
-    <p id="response"></p>
-
-    <script>
-        async function sendMessage() {
-            let message = document.getElementById("message").value;
-
-            let response = await fetch("/chat", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    message: message
-                })
-            });
-
-            let data = await response.json();
-
-            document.getElementById("response").innerText = data.response;
+    <style>
+        body {
+            margin: 0;
+            padding: 32px;
+            background: #f4f7fb;
+            color: #1e293b;
+            font-family: Arial, sans-serif;
         }
-    </script>
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h1 {
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-top: 0;
+        }
+
+        .summary,
+        .forms,
+        .records {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .summary {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .forms,
+        .records {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .card {
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+        }
+
+        .label {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .amount {
+            margin: 8px 0 0;
+            color: #0f172a;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+        }
+
+        input,
+        button {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 11px;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input {
+            border: 1px solid #cbd5e1;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: #2563eb;
+            color: white;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>Expense Tracker</h1>
+        <p class="subtitle">Manage your income, expenses and budget.</p>
+
+        <section class="summary">
+            <div class="card">
+                <p class="label">Total Income</p>
+                <p class="amount">₦{{ "%.2f"|format(total_income) }}</p>
+            </div>
+
+            <div class="card">
+                <p class="label">Total Expenses</p>
+                <p class="amount">₦{{ "%.2f"|format(total_expenses) }}</p>
+            </div>
+
+            <div class="card">
+                <p class="label">Current Balance</p>
+                <p class="amount">₦{{ "%.2f"|format(balance) }}</p>
+            </div>
+
+            <div class="card">
+                <p class="label">Budget Remaining</p>
+                <p class="amount">₦{{ "%.2f"|format(budget_remaining) }}</p>
+            </div>
+        </section>
+
+        <section class="forms">
+            <div class="card">
+                <h2>Add Income</h2>
+
+                <form action="/add-income" method="POST">
+                    <input type="text" name="source" placeholder="Income source" required>
+                    <input type="number" name="amount" placeholder="Amount" min="0" step="0.01" required>
+                    <input type="date" name="date" required>
+                    <button type="submit">Add Income</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>Add Expense</h2>
+
+                <form action="/add-expense" method="POST">
+                    <input type="text" name="item" placeholder="Expense item" required>
+                    <input type="number" name="amount" placeholder="Amount" min="0" step="0.01" required>
+                    <input type="text" name="category" placeholder="Category" required>
+                    <input type="date" name="date" required>
+                    <button type="submit">Add Expense</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>Set Monthly Budget</h2>
+
+                <form action="/set-budget" method="POST">
+                    <input type="number" name="budget" placeholder="Budget amount" min="0" step="0.01" required>
+                    <button type="submit">Save Budget</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="records">
+            <div class="card">
+                <h2>Recent Expenses</h2>
+
+                {% if expenses %}
+                    <ul>
+                        {% for expense in expenses[-5:]|reverse %}
+                            <li>
+                                <strong>{{ expense["item"] }}</strong><br>
+                                ₦{{ "%.2f"|format(expense["amount"]) }}
+                                · {{ expense["category"] }}
+                                · {{ expense["date"] }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No expenses yet.</p>
+                {% endif %}
+            </div>
+
+            <div class="card">
+                <h2>Recent Income</h2>
+
+                {% if income %}
+                    <ul>
+                        {% for entry in income[-5:]|reverse %}
+                            <li>
+                                <strong>{{ entry["source"] }}</strong><br>
+                                ₦{{ "%.2f"|format(entry["amount"]) }}
+                                · {{ entry["date"] }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No income recorded yet.</p>
+                {% endif %}
+            </div>
+        </section>
+    </main>
 </body>
 </html>
