@@ -8,6 +8,7 @@ from news_tool import NewsTool
 from expense_tool import ExpenseTool
 from memory import Memory
 from robot_tools import RobotTools
+from leads_tool import LeadTool
 
 
 class ToolRouter:
@@ -24,6 +25,8 @@ class ToolRouter:
         self.expense = ExpenseTool()
         self.memory = Memory()
         self.robot_tools = RobotTools()
+        self.leads = LeadTool()
+        self.leads.init_db()
 
 
     def show_tools(self):
@@ -272,5 +275,30 @@ class ToolRouter:
                 command
             )
 
+
+        # --------------------------------
+        # Lead Capture
+        # --------------------------------
+        if any(word in lower_command for word in ["hire", "project", "work with", "contact", "business", "service"]):
+            return (
+                "🚀 I'd love to get you connected with the Raremotion Labs team!\n\n"
+                "To get started, please send your details in this format:\n"
+                "save lead: [Name], [Email], [Project Details]\n\n"
+                "Example: save lead: John Doe, john@example.com, I need an AI chatbot for my store"
+            )
+
+        if lower_command.startswith("save lead"):
+            try:
+                parts = command[10:].split(",")
+                if len(parts) < 3:
+                    return "Please provide all three: Name, Email, and Project Details, separated by commas."
+
+                name = parts[0].strip()
+                email = parts[1].strip()
+                details = parts[2].strip()
+
+                return self.leads.save_lead(name, email, details)
+            except Exception as e:
+                return f"Error saving lead: {str(e)}"
 
         return None
