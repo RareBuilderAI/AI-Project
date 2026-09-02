@@ -8,12 +8,16 @@ from flask import (
     render_template,
     request,
     jsonify,
-    send_from_directory
+    send_from_directory,
+    session,
+    redirect,
+    url_for
 )
 
 from tool_router import ToolRouter
 
 app = Flask(__name__)
+app.secret_key = "raremotion_secret_key"
 
 DATABASE = "finance.db"
 
@@ -75,6 +79,29 @@ def init_db():
 
 
 init_db()
+
+
+# =========================================
+# ADMIN COMMAND CENTER
+# =========================================
+
+@app.route("/admin")
+def admin():
+    # Simple security gate
+    password = request.args.get("pw")
+    if password != "raremotion":
+        return "Unauthorized. Please provide the correct access key.", 403
+
+    from leads_tool import LeadTool
+    leads_tool = LeadTool()
+
+    # Get leads as a list of dictionaries
+    connection = sqlite3.connect("finance.db")
+    connection.row_factory = sqlite3.Row
+    leads = connection.execute("SELECT * FROM leads ORDER BY id DESC").fetchall()
+    connection.close()
+
+    return render_template("admin.html", leads=leads)
 
 
 # =========================================
