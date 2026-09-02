@@ -113,6 +113,29 @@ document.addEventListener(
 document.addEventListener(
     "DOMContentLoaded",
     () => {
+        // --- Chat Widget Logic ---
+        const chatToggle = document.getElementById("chat-toggle");
+        const chatWindow = document.getElementById("chat-window");
+        const closeChat = document.getElementById("close-chat");
+        const sendBtn = document.getElementById("send-btn");
+
+        if (chatToggle && chatWindow) {
+            chatToggle.addEventListener("click", () => {
+                chatWindow.classList.toggle("hidden");
+            });
+        }
+
+        if (closeChat && chatWindow) {
+            closeChat.addEventListener("click", () => {
+                chatWindow.classList.add("hidden");
+            });
+        }
+
+        if (sendBtn) {
+            sendBtn.addEventListener("click", sendMessage);
+        }
+
+        // --- Scroll Animation Logic ---
         const observerOptions = {
             threshold: 0.1
         };
@@ -131,5 +154,22 @@ document.addEventListener(
         document.querySelectorAll("section").forEach((section) => {
             observer.observe(section);
         });
+
+        // --- Existing Chat Input Logic ---
+        const input = document.getElementById("user-input");
+        if (input) {
+            input.addEventListener(
+                "keydown",
+                (event) => {
+                    if (
+                        event.key === "Enter" &&
+                        !event.shiftKey
+                    ) {
+                        event.preventDefault();
+                        sendMessage();
+                    }
+                }
+            );
+        }
     }
 );

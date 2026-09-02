@@ -162,6 +162,32 @@
         <p>© 2026 Raremotion Labs</p>
     </footer>
 
+    <!-- AI Chat Widget -->
+    <div id="chat-widget" class="chat-widget">
+        <button id="chat-toggle" class="chat-toggle">
+            <span class="chat-icon">🤖</span>
+        </button>
+
+        <div id="chat-window" class="chat-window hidden">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <span class="chat-status-dot"></span>
+                    <strong>RobotChat AI</strong>
+                </div>
+                <button id="close-chat" class="close-chat">&times;</button>
+            </div>
+            <div id="chat-box" class="chat-box">
+                <p class="chat-welcome">Hello! I am the RobotChat AI. How can I assist you today?</p>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="user-input" placeholder="Ask the Lab anything...">
+                <button id="send-btn" class="send-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 22 2 2"></polygon></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
