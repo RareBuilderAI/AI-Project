@@ -1,33 +1,55 @@
-from user_memory_tool import UserMemoryTool
+from assistant import Assistant
 
 
 class RobotChat:
 
     def __init__(self):
 
-        self.name = "RobotChat"
-        self.owner = "Yhomi"
-        self.goal = "Build AI and automation systems"
-
-        self.memory = UserMemoryTool()
+        self.assistant = Assistant("RobotChat")
 
 
     def introduce(self):
 
         return (
-            f"I am {self.name}, built by {self.owner}. "
-            f"My mission is to {self.goal}."
+            "I am RobotChat, built by Yhomi. "
+            "My mission is to Build AI and automation systems."
         )
+
+
+    def about_brand(self):
+
+        return (
+            "🏢 Raremotion Labs\n"
+            "Technology studio focused on AI, automation, "
+            "software development, and digital systems."
+        )
+
+
+    def show_available_tools(self):
+
+        return self.assistant.show_available_tools()
 
 
     def save_user(self, name, goal):
 
-        return self.memory.save_user(
-            name,
-            goal
-        )
+        return self.assistant.save_user(name, goal)
 
 
     def show_user(self):
 
-        return self.memory.get_user()
+        return self.assistant.memory.get_user()
+
+
+    def remember(self, key, value):
+
+        return self.assistant.remember(key, value)
+
+
+    def recall(self, key):
+
+        return self.assistant.recall(key)
+
+
+    def respond(self, message):
+
+        return self.assistant.respond(message)

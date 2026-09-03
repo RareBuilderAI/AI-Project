@@ -1,39 +1,38 @@
-from tool_router import ToolRouter
+from robotchat_core import RobotChat
 
 
 class RobotChatApp:
 
     def __init__(self):
 
-        self.router = ToolRouter()
+        self.robot = RobotChat()
 
 
     def start(self):
 
-        print(
-            "🤖 RobotChat: Hello Yhomi. How can I help?"
-        )
-
+        print(self.robot.introduce())
 
         while True:
 
-            user = input("\nYou: ")
+            message = input("You: ").strip()
 
+            if not message:
 
-            if user.lower() == "exit":
+                continue
 
-                print(
-                    "RobotChat closed 👋"
-                )
+            if message.lower() in ["quit", "exit", "bye"]:
+
+                print("RobotChat closed 👋")
 
                 break
 
+            response = self.robot.respond(message)
 
-            response = self.router.run(user)
+            print(f"RobotChat: {response}")
 
 
-            print(
-                "\nRobotChat:"
-            )
+if __name__ == "__main__":
 
-            print(response)
+    app = RobotChatApp()
+
+    app.start()

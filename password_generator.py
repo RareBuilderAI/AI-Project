@@ -1,18 +1,41 @@
 import random
+import string
 
-letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-numbers = "0123456789"
-symbols = "!@#$%^&*"
 
-characters = letters + numbers + symbols
+print("🔐 Password Generator")
+print("Type 'quit' to exit.")
 
-print("Password Generator 🔐")
 
-length = int(input("How many characters do you want? "))
+while True:
 
-password = ""
+    length_input = input(
+        "\nHow many characters do you want? "
+    )
 
-for i in range(length):
-    password += random.choice(characters)
+    if length_input.lower() == "quit":
+        print("Password Generator closed.")
+        break
 
-print("Your password is:", password)
+    try:
+        length = int(length_input)
+
+    except ValueError:
+        print("Please enter a valid number.")
+        continue
+
+    if length < 4:
+        print("Password length must be at least 4 characters.")
+        continue
+
+    letters = string.ascii_letters
+    numbers = string.digits
+    symbols = "!@#$%^&*"
+
+    characters = letters + numbers + symbols
+
+    password = ""
+
+    for i in range(length):
+        password += random.choice(characters)
+
+    print("Your password is:", password)

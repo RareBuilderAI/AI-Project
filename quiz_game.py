@@ -1,33 +1,50 @@
 questions = [
     {
         "question": "What programming language are we learning?",
-        "answer": "python"
+        "answers": ["python"]
     },
     {
         "question": "What does AI stand for?",
-        "answer": "artificial intelligence"
+        "answers": ["artificial intelligence", "ai"]
     },
     {
         "question": "What does CPU stand for?",
-        "answer": "central processing unit"
+        "answers": ["central processing unit"]
+    },
+    {
+        "question": "What does HTML stand for?",
+        "answers": ["hypertext markup language"]
+    },
+    {
+        "question": "What does API stand for?",
+        "answers": ["application programming interface"]
     }
 ]
 
 
 score = 0
 
-print("Welcome to Quiz Game 🎯")
+
+print("🎯 Quiz Game")
 print("Let's begin!")
+print()
 
 
 for item in questions:
+
     answer = input(item["question"] + " ")
 
-    if answer.lower().strip() == item["answer"]:
+    answer = answer.lower().strip()
+
+    if answer in item["answers"]:
         print("Correct! 🎉")
         score += 1
+
     else:
         print("Wrong answer.")
 
+    print()
 
+
+print("Quiz finished!")
 print("Your final score is:", score, "/", len(questions))

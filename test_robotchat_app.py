@@ -1,6 +1,8 @@
 from robotchat_app import RobotChatApp
 
 
-robot = RobotChatApp()
+def test_robotchat_app_can_be_created():
 
-robot.start()
+    robot = RobotChatApp()
+
+    assert robot is not None
