@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Task Studio | Raremotion Labs</title><link rel="stylesheet" href="tasks.css"><script src="tasks.js" defer></script></head>
+<body><nav><a class="brand" href="index.html">RAREMOTION <span>LABS</span></a><a href="projects.html">← All projects</a></nav><main>
+<div class="intro"><span class="eyebrow">A LITTLE FOCUS. REAL PROGRESS.</span><h1>Make room for<br>your next big thing<span>.</span></h1><p>A simple space to plan, focus, and finish. One task at a time.</p></div>
+<div class="workspace"><aside><span class="eyebrow">YOUR WORKSPACE</span><h2>Task Studio</h2><p id="summary" aria-live="polite"></p><progress id="progress" max="100" value="0" aria-label="Tasks completed"></progress><p class="hint">Your tasks stay in this browser. No account needed. Clearing browser data removes them.</p><button id="export" class="secondary">Download task backup</button></aside>
+<section aria-label="Task manager"><form id="add-form"><label for="task">What would you like to get done?</label><div class="add-row"><input id="task" required maxlength="200" placeholder="Give your next step a name…" autocomplete="off"><button type="submit">Add task <span aria-hidden="true">+</span></button></div></form>
+<div class="toolbar"><div role="group" aria-label="Filter tasks"><button class="filter" data-filter="all" aria-pressed="true">All</button><button class="filter" data-filter="active" aria-pressed="false">To do</button><button class="filter" data-filter="done" aria-pressed="false">Completed</button></div><span id="count"></span></div>
+<ul id="tasks"></ul><div id="empty"><span aria-hidden="true">✧</span><h3>A clear space. A fresh start.</h3><p>Add your first task above and turn an idea into progress.</p></div>
+<p id="notice" role="status"></p><button id="undo" hidden class="secondary">Undo delete</button><noscript>Enable JavaScript to use the task list.</noscript></section></div>
+<footer>Built inside Raremotion Labs <span>Small steps. Meaningful things.</span></footer></main></body></html>
