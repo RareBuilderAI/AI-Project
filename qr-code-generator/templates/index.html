@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Raremotion QR Code Generator</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <main class="container">
+
+        <section class="card">
+
+            <p class="brand">
+                Raremotion Labs
+            </p>
+
+            <h1>
+                QR Code Generator
+            </h1>
+
+            <p class="subtitle">
+                Enter a URL or text and generate a QR code instantly.
+            </p>
+
+            <form method="POST">
+
+                <textarea
+                    name="qr_text"
+                    placeholder="Paste a URL or enter text..."
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    Generate QR Code
+                </button>
+
+            </form>
+
+            {% if error %}
+                <div class="error">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            {% if qr_image %}
+
+                <div class="result">
+
+                    <h2>
+                        Your QR Code
+                    </h2>
+
+                    <img
+                        src="{{ url_for('static', filename='../generated_qr/' + qr_image) }}"
+                        alt="Generated QR Code"
+                    >
+
+                    <a
+                        href="/download/{{ qr_image }}"
+                        class="download-button"
+                    >
+                        Download QR Code
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </section>
+
+    </main>
+
+</body>
+</html>
