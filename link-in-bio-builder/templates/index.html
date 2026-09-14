@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Raremotion Link-in-Bio Builder
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <main class="page">
+
+        <section class="builder-panel">
+
+            <p class="brand">
+                Raremotion Labs
+            </p>
+
+            <h1>
+                Link-in-Bio Builder
+            </h1>
+
+            <p class="subtitle">
+                Build and manage your own link page.
+            </p>
+
+
+            <div class="panel-section">
+
+                <h2>
+                    Edit Profile
+                </h2>
+
+                <form
+                    method="POST"
+                    action="/update-profile"
+                    class="form"
+                >
+
+                    <label>
+                        Display Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        value="{{ profile['name'] }}"
+                        required
+                    >
+
+                    <label>
+                        Bio
+                    </label>
+
+                    <textarea
+                        name="bio"
+                        required
+                    >{{ profile['bio'] }}</textarea>
+
+                    <button type="submit">
+                        Update Profile
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div class="panel-section">
+
+                <h2>
+                    Add New Link
+                </h2>
+
+                <form
+                    method="POST"
+                    action="/add-link"
+                    class="form"
+                >
+
+                    <label>
+                        Link Title
+                    </label>
+
+                    <input
+                        type="text"
+                        name="title"
+                        placeholder="GitHub"
+                        required
+                    >
+
+                    <label>
+                        URL
+                    </label>
+
+                    <input
+                        type="text"
+                        name="url"
+                        placeholder="https://github.com/..."
+                        required
+                    >
+
+                    <button type="submit">
+                        Add Link
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div class="panel-section">
+
+                <h2>
+                    Current Links
+                </h2>
+
+                {% if links %}
+
+                    <div class="admin-links">
+
+                        {% for link in links %}
+
+                            <div class="admin-link">
+
+                                <div>
+
+                                    <strong>
+                                        {{ link['title'] }}
+                                    </strong>
+
+                                    <p>
+                                        {{ link['url'] }}
+                                    </p>
+
+                                </div>
+
+                                <form
+                                    method="POST"
+                                    action="/delete-link/{{ link['id'] }}"
+                                >
+
+                                    <button
+                                        type="submit"
+                                        class="delete-button"
+                                    >
+                                        Delete
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% else %}
+
+                    <p class="empty">
+                        No links added yet.
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+
+        <section class="preview-panel">
+
+            <div class="phone">
+
+                <div class="profile">
+
+                    <div class="avatar">
+                        RL
+                    </div>
+
+                    <h2>
+                        {{ profile['name'] }}
+                    </h2>
+
+                    <p>
+                        {{ profile['bio'] }}
+                    </p>
+
+                </div>
+
+
+                <div class="public-links">
+
+                    {% for link in links %}
+
+                        <a
+                            href="{{ link['url'] }}"
+                            target="_blank"
+                            class="public-link"
+                        >
+                            {{ link['title'] }}
+                        </a>
+
+                    {% endfor %}
+
+                </div>
+
+
+                {% if not links %}
+
+                    <p class="preview-empty">
+                        Your links will appear here.
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+
+</body>
+
+</html>
