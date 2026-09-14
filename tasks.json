@@ -318,5 +318,9 @@
     {
         "task": "Build Raremotion Labs website",
         "completed": false
+    },
+    {
+        "task": "test robotchat to-do",
+        "completed": false
     }
 ]

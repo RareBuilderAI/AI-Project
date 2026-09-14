@@ -1,0 +1,17 @@
+{
+    "Build Raremotion Labs": [
+        "Open Raremotion Labs project",
+        "Write code",
+        "Test the project",
+        "Fix errors",
+        "Review the project",
+        "Save the project"
+    ],
+    "Build RobotChat": [
+        "Open RobotChat project",
+        "Test the code",
+        "Fix errors",
+        "Review the project",
+        "Save the project"
+    ]
+}

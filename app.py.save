@@ -1,4 +1,6 @@
-yimport os
+ source /Users/mac/Documents/RobotChat/.venv/bin/activate
+ source /Users/mac/Documents/RobotChat/.venv/bin/activate
+import os
 import sqlite3
 
 from datetime import datetime
@@ -8,20 +10,18 @@ from flask import (
     render_template,
     request,
     jsonify,
-    send_from_directory,
-    session,
-    redirect,
-    url_for
+    send_from_directory
 )
 
 from tool_router import ToolRouter
 
+
 app = Flask(__name__)
-app.secret_key = "raremotion_secret_key"
 
 DATABASE = "finance.db"
 
 tool_router = ToolRouter()
+
 
 # =========================================
 # DATABASE
@@ -79,29 +79,6 @@ def init_db():
 
 
 init_db()
-
-
-# =========================================
-# ADMIN COMMAND CENTER
-# =========================================
-
-@app.route("/admin")
-def admin():
-    # Simple security gate
-    password = request.args.get("pw")
-    if password != "raremotion":
-        return "Unauthorized. Please provide the correct access key.", 403
-
-    from leads_tool import LeadTool
-    leads_tool = LeadTool()
-
-    # Get leads as a list of dictionaries
-    connection = sqlite3.connect("finance.db")
-    connection.row_factory = sqlite3.Row
-    leads = connection.execute("SELECT * FROM leads ORDER BY id DESC").fetchall()
-    connection.close()
-
-    return render_template("admin.html", leads=leads)
 
 
 # =========================================
@@ -469,77 +446,56 @@ def chat():
                 "Sorry, RobotChat could not "
                 "process that message."
             )
-        })
+        }), 500
 
 # =========================================
 # RAREMOTION LABS WEBSITE
 # =========================================
 
-WEBSITE_FOLDER = os.path.join(
-    os.path.dirname(__file__),
-    "website"
-)
-
-
 @app.route("/labs")
 def labs_home():
-
     return send_from_directory(
-        WEBSITE_FOLDER,
-        "index.html"
-    )
-
-
-@app.route("/labs/")
-def labs_home_slash():
-
-    return send_from_directory(
-        WEBSITE_FOLDER,
+        "website",
         "index.html"
     )
 
 
 @app.route("/labs/about")
 def labs_about():
-
     return send_from_directory(
-        WEBSITE_FOLDER,
+        "website",
         "about.html"
     )
 
 
 @app.route("/labs/projects")
 def labs_projects():
-
     return send_from_directory(
-        WEBSITE_FOLDER,
+        "website",
         "projects.html"
     )
 
 
 @app.route("/labs/services")
 def labs_services():
-
     return send_from_directory(
-        WEBSITE_FOLDER,
+        "website",
         "services.html"
     )
 
 
 @app.route("/labs/contact")
 def labs_contact():
-
     return send_from_directory(
-        WEBSITE_FOLDER,
+        "website",
         "contact.html"
     )
 
 
 @app.route("/labs/<path:filename>")
-def labs_files(filename):
-
+def labs_assets(filename):
     return send_from_directory(
-        WEBSITE_FOLDER,
+        "website",
         filename
     )
 
