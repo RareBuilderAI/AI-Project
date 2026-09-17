@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "esbuild": "^0.28.2",
+    "jsqr": "^1.4.0",
+    "qrcode": "^1.5.4"
+  },
+  "private": true,
+  "scripts": {
+    "build": "esbuild entry.js --bundle --minify --platform=browser --format=iife --global-name=LabQR --outfile=../../website/qr-vendor.js",
+    "test": "node check.cjs"
+  }
+}

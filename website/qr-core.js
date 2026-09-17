@@ -1,0 +1,6 @@
+'use strict';
+const QRTools={
+ content(value,type){const text=type==='url'?value.trim():value;if(!text.trim())throw Error('Enter a link or some text to generate a code.');if(new TextEncoder().encode(text).length>1000)throw Error('Keep your content within 1,000 bytes. Shorter codes scan more easily.');if(type==='url'){let u;try{u=new URL(text);}catch{throw Error('Enter a complete website link, starting with https:// or http://.');}if(!['https:','http:'].includes(u.protocol)||!u.hostname||u.username||u.password||/\s/.test(text))throw Error('Use an http:// or https:// website link without spaces or embedded login details.');}return text;},
+ paint(canvas,qr,size){const ctx=canvas.getContext('2d');if(!ctx)throw Error('This browser cannot draw a QR code.');const n=qr.modules.size,scale=Math.floor(size/(n+8));if(scale<1)throw Error('Choose a larger image size.');canvas.width=canvas.height=size;ctx.fillStyle='#ffffff';ctx.fillRect(0,0,size,size);const offset=Math.floor((size-n*scale)/2);ctx.fillStyle='#000000';for(let row=0;row<n;row++)for(let col=0;col<n;col++)if(qr.modules.get(row,col))ctx.fillRect(offset+col*scale,offset+row*scale,scale,scale);}
+};
+if(typeof module!=='undefined')module.exports=QRTools;
