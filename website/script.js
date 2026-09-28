@@ -137,7 +137,8 @@ document.addEventListener(
 
         // --- Scroll Animation Logic ---
         const observerOptions = {
-            threshold: 0.1
+            // Tall mobile sections may never fit 10% inside the viewport.
+            threshold: 0
         };
 
         const observer = new IntersectionObserver(
